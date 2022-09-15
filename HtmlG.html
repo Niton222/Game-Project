@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Number Guess</title>
@@ -6,13 +7,15 @@
 	<style type="text/css">
 		body {
 	margin: 10px;
-	font-family: Arial, sans-serif;
-	background-color: #000080;
+	font-family: TimesNewRoman, sans-serif;
+	background-image: url(https://c.tenor.com/IZ2eQ1jjxdAAAAAd/numbers.gif) 
+
 }
 
 .button {
 	margin-top: 10px;
-	background-color: #FFA07A;
+	background-image: url(https://c.tenor.com/U4hcOCBfCI4AAAAC/button-mouse.gif);
+	background-size: cover;
 	border-radius: 10px;
 	border-color: #00CED1;
 	border-style: solid;
@@ -21,12 +24,18 @@
 	padding: 20px;
 	text-align: center;
 	font-weight: bold;
+	height: 50px;
 }
-p{color:#FFA500 ;
+p{color:#f53d14 ;
+background-image:url(https://c.tenor.com/h31_rsjCSr8AAAAC/space-calatop.gif) ;
+width: 20%;
 }
-ol{color: #FFA500;}
-h2{
-	color:#FFA500;
+ol{background-image: url(https://c.tenor.com/do8q_eYrsW4AAAAd/crying-black-guy-meme.gif);
+	width: 15%;
+  color: #f53d14;}
+h2{ background-image:url(https://c.tenor.com/h31_rsjCSr8AAAAC/space-calatop.gif) ;
+	color:#f53d14;
+	width: 20%;
 
 }
 #historyArea {
@@ -35,11 +44,13 @@ h2{
 	padding-right: 5px;
 }
 h1{
-	background-color: #00FA9A;
+	background-image: url(https://media0.giphy.com/media/l378vg4Pm9LGnmD6M/giphy.gif?cid=790b76116ae60f94a041c8b2ea31d922f865ba7b045c56b8&rid=giphy.gif&ct=g);
+ width: 400px;
+ color:#eb3477 ;
 }
 
 #game {
-	background-image: url(https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/numbers-chart-1-100-1-1618855834.png);
+	background-image: url(https://tenor.com/view/numbers-gif-21370337);
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 3px;
@@ -68,7 +79,7 @@ h1{
 			<div id="statusArea">
 				<p>Enter a number between 1-100 and click the button...</p>
 			</div>
-			<input type="number" id="userGuess"/>
+			<input type="number" onclick="clicks++" id="userGuess"/>
 			<div id="buttonArea" class="button">
 			</div>
 			<div id="historyArea">
@@ -134,7 +145,19 @@ function userGuessed() {
 window.onload = function() {
 	newGame();
 	document.getElementById('buttonArea').addEventListener('click', userGuessed);
-};
+ };
+ var clicks = 0;
+ clicks += 1;
+ if (clicks = 3){
+ 	window.onload = function() {
+	newGame();
+	document.getElementById('buttonArea').addEventListener('click', userGuessed);
+}
+ }
+
+
+ 
+
 
 
 
