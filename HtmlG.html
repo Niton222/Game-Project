@@ -1,39 +1,49 @@
 <html>
 	<head>
 		<title>Number Guess</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no" charset="UTF-8">
 	
 	<style type="text/css">
 		body {
 	margin: 10px;
-	background-color: #cccccc;
 	font-family: Arial, sans-serif;
+	background-color: #000080;
 }
 
 .button {
 	margin-top: 10px;
+	background-color: #FFA07A;
 	border-radius: 10px;
-	border-color: #000000;
+	border-color: #00CED1;
 	border-style: solid;
 	border-width: 1px;
 	width: 20%;
-	padding: 5px;
+	padding: 20px;
 	text-align: center;
 	font-weight: bold;
 }
+p{color:#FFA500 ;
+}
+ol{color: #FFA500;}
+h2{
+	color:#FFA500;
 
+}
 #historyArea {
 	margin-top: 10px;
 	padding-left: 5px;
 	padding-right: 5px;
 }
+h1{
+	background-color: #00FA9A;
+}
 
 #game {
-	background-color: #ffffff;
+	background-image: url(https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/numbers-chart-1-100-1-1618855834.png);
 	border-radius: 10px;
 	border-style: solid;
 	border-width: 3px;
-	border-color: #cccccc;
+	border-color:#FF4500;
 	padding: 10px;
 }
 
@@ -47,6 +57,9 @@
 	font-size: 90%;
 	font-style: italic;
 }
+#endGame {
+	background-color: ;
+}
 	</style>
 	</head>
 	<body>
@@ -57,7 +70,6 @@
 			</div>
 			<input type="number" id="userGuess"/>
 			<div id="buttonArea" class="button">
-				Guess
 			</div>
 			<div id="historyArea">
 				<h2>Your Previous Guesses</h2>
@@ -67,29 +79,65 @@
 			<div id="footerArea">
 <script type="text/javascript">
       
-  var secretNumber=0;
-  let var numberOfGuesses=10;
-function writemessage(elemntId, message, append Message)
-function newGame(){
-	var x = ();
-	var y = ();
-	secretNumber = Math.floor(Math.random() * x) + y;
+var secretNumber = 0,
 	numberOfGuesses = 0;
-	writeMessage('historyList' + userGuessed);
+
+function writeMessage(elementId, message, appendMessage) {
+	var elemToUpdate = document.getElementById(elementId);
+	if (appendMessage) {
+		elemToUpdate.innerHTML = elemToUpdate.innerHTML + message;
+	} else {
+		elemToUpdate.innerHTML = message;
+	}
 };
+
+function newGame() {
+	secretNumber = Math.floor(Math.random() * 100) + 1;
+	numberOfGuesses = 0;
+	writeMessage('historyList', '');
+}
+
+function guessInRange(guess) {
+	return (guess > 0 && guess < 101);
+}
+
+function userGuessed() {
+	var userGuessed = document.getElementById('userGuess').value;
+	var statusArea = document.getElementById('statusArea');
+	var historyList = document.getElementById('historyList');
+	if (userGuessed.length == 0 || ! guessInRange(userGuessed)) {
+		
+		writeMessage('statusArea', '<p>Please enter a number 1-100 and press the Guess button.</p>');
+	} else if (userGuessed.indexOf('.') != -1) {
+		writeMessage('statusArea', '<p>Please enter a whole number 1-100 and press the Guess button.</p>');
+	} else {
+		numberOfGuesses++;
+
+		if (userGuessed == secretNumber) {
+			
+			writeMessage('statusArea', '<p>You got me in ' + numberOfGuesses +' guesses, I was thinking ' + secretNumber + '. Let\'s go again...</p>');
+			newGame();
+		} else if (userGuessed < secretNumber) {
+			
+			writeMessage('statusArea', '<p>You need to guess higher than ' + userGuessed + ', try again...</p>');
+			writeMessage('historyList', '<li>' + userGuessed +' (too low)</li>', true);
+		} else {
+			
+			writeMessage('statusArea', '<p>You need to guess lower than ' + userGuessed + ', try again...</p>');
+			writeMessage('historyList', '<li>' + userGuessed + ' (too high)</li>', true);
+		}
+	}
+
+	document.getElementById('userGuess').value = '';	
+}
+
 window.onload = function() {
 	newGame();
 	document.getElementById('buttonArea').addEventListener('click', userGuessed);
 };
-if {userGuessed < secretNumber}{
-	document.getElementById {'historyList','<p>Try higher</p>' + userGuessed}
-if {userGuessed > secretNumber} {
-	document.getElementById {'historyList','<p>Try lower</p>' + userGuessed}
-}
 
 
 
- 
 
 
             </script>
